@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
@@ -20,6 +21,33 @@ public class HelloController {
     public String helloMvc (@RequestParam("name") String name, Model model) {
         model.addAttribute("name", name);
 
-        return "hello-templates";
+        return "hello-templates"; // 타임리프 엔진을 이용해서 page view 자체를 결과로 보낸다.
+    }
+
+    @GetMapping("hello-string")
+    @ResponseBody // API 방식, http 의 body 부분에 return 값을 그대로 보낸다.
+    public String helloString (@RequestParam("name") String name) {
+        return "hello " + name;
+    }
+
+    @GetMapping("hello-api")
+    @ResponseBody // API 방식, http 의 body 부분에 return 값을 그대로 보낸다.
+    public Hello helloApi (@RequestParam("name") String name) {
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+
+    static class Hello {
+
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
