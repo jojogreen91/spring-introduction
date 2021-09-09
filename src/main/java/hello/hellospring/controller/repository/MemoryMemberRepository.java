@@ -32,4 +32,9 @@ public class MemoryMemberRepository implements MemberRepository {
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
     }
+
+    // store Hashmap 에 저장되어 있던 것들을 전부 삭제 시켜주는 메서드, 초기화
+    public void clear () {
+        store.clear();
+    }
 }
