@@ -6,10 +6,9 @@ import hello.hellospring.controller.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
-// 해당 요소를 static import 시켜서 .assertThat() 과 같은 메서드를 바로 사용 할 수 있다.
 import java.util.List;
 
+// 해당 요소를 static import 시켜서 .assertThat() 과 같은 메서드를 바로 사용 할 수 있다.
 import static org.assertj.core.api.Assertions.*;
 
 public class MemoryMemberRepositoryTest {
@@ -33,6 +32,7 @@ public class MemoryMemberRepositoryTest {
 
         Member result = repository.findById(member.getId()).get();
 
+        // assert 라이브러리의 메서드를 활용해서 테스트 검증
         assertThat(result).isEqualTo(member);
     }
 
