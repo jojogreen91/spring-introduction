@@ -17,7 +17,7 @@ public class MemoryMemberRepositoryTest {
     @AfterEach
     public void afterEach() {
         // repository 초기화를 통해 각각의 테스트간의 간섭을 없애기 위한 방법
-        repository.clear();
+        repository.clearStore();
     }
 
     @Test // 해당 메서드를 실행해서 테스트를 하기 위해서 붙여야 하는 Annotation

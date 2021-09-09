@@ -6,11 +6,14 @@ import java.util.*;
 
 public class MemoryMemberRepository implements MemberRepository {
 
+    // HashMap 을 이용해서 부여된 아이디와 Member 객체를 매핑하여 저장한다. 실질적 저장소 역할. static 인것에 유의.
     private static Map<Long, Member> store = new HashMap<>();
+    // 아이디에 부여될 sequence 숫자 설정
     private static long sequence = 0L;
 
     @Override
     public Member save(Member member) {
+        // sequence 값을 설정해놓고 순차적으로 아이디 부여
         member.setId(++sequence);
         store.put(member.getId(), member);
         return member;
@@ -34,7 +37,7 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     // store Hashmap 에 저장되어 있던 것들을 전부 삭제 시켜주는 메서드, 초기화
-    public void clear () {
+    public void clearStore () {
         store.clear();
     }
 }
