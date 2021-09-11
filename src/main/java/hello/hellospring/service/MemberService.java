@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
     // MemberRepository 멤버변수를 매개변수로 받아 설정하는 생성자
-    @Autowired // Repository 에 대한 의존성 주입
+    //@Autowired // Repository 에 대한 의존성 주입
+    // 스프링컨테이너에 스프링 빈으로 등록되게 하는 이 객체의 생성자, 자동이던 수동이던, 생성자 주입 방식
     public MemberService (MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

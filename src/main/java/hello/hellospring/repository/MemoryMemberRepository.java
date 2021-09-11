@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     // HashMap 을 이용해서 부여된 아이디와 Member 객체를 매핑하여 저장한다. 실질적 저장소 역할. static 인것에 유의.
