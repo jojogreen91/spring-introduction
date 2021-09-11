@@ -4,8 +4,11 @@ import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -35,5 +38,16 @@ public class MemberController {
 
         // 등록 종료 후 다시 home 화면으로 복귀
         return "redirect:/";
+    }
+
+    // 모든 멤버의 리스트를 조회하기 위해 서비스 로직으로 멤버 리스트를 찾아서 memberList 에 템플릿 엔진을 이용해 입력 & 출력한다.
+    @GetMapping("/members")
+    public String list (Model model) {
+        List<Member> members = memberService.findMembers();
+
+        // 모델 객체를 사용하고 타임리프 템플릿 엔진을 통해 memberList 뷰에다가 member 객체들을 넣어준다.
+        model.addAttribute("members", members);
+
+        return "members/memberList";
     }
 }

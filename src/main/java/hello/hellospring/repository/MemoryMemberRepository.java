@@ -34,6 +34,7 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public List<Member> findAll() {
+        // store.values() 는 Collection(List) 을 반환하기 때문에 바로 넣어서 ArrayList 를 생성해준다.
         return new ArrayList<>(store.values());
     }
 
