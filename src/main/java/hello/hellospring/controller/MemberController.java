@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+// 컴포넌트 스캔 기능이 발동하는 @Component 계열의 Annotation
 @Controller
 public class MemberController {
 
     private final MemberService memberService;
 
     // 스프링컨테이너에 스프링 빈으로 등록되게 하는 이 객체의 생성자, 자동이던 수동이던, 생성자 주입 방식
-    @Autowired // Service 에 대한 의존성 주입
+    @Autowired // 자동으로 Service 에 대한 의존성 주입
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
