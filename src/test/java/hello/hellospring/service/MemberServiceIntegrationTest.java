@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+// db 까지 연동된 테스트를 하기 위한 Annotation 설정
 @SpringBootTest
 @Transactional
 class MemberServiceIntegrationTest {
