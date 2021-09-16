@@ -24,11 +24,20 @@ public class MemberService {
 
     // 회원 가입
     public Long join (Member member) {
-        // 같은 이름 회원 중복 가입 방지
-        validateDuplicateMember(member);
+        double startTime = System.currentTimeMillis();
 
-        memberRepository.save(member);
-        return member.getId();
+        try {
+            // 같은 이름 회원 중복 가입 방지
+            validateDuplicateMember(member);
+
+            memberRepository.save(member);
+            return member.getId();
+        }
+        finally {
+            double endTime = System.currentTimeMillis();
+            // 메서드 동작 소요시간 측정 로그, AOP 기술을 안쓰면 이렇게 메서드마다 코딩을 해줘야 한다.
+            System.out.println("소요시간 : " + (endTime-startTime) + " ms");
+        }
     }
 
     // 중복 회원 검증
